@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+
+    mysql:
+        image: mysql:latest
+        restart: always
+        ports:
+            - 3306:33060
+        environment:
+            - MYSQL_ROOT_PASSWORD=mysql1234
+            - MYSQL_USER=luigi
+            - MYSQL_PASSWORD=mysql1234
+            - MYSQL_DATABASE=PyCity
+        
+        volumes:
+            - db-data:/var/lib/mysql
+            - /home/luigipepe/projects/PyCity/db_schema.sql:/docker-entrypoint-initdb.d/db_schema.sql
+
+        networks:
+            - mysql-network
+
+    pycity: 
+        build: .
+
+        links:
+            - mysql
+        ports:
+            - 8001:8001
+        depends_on: 
+            - mysql # This service depends on mysql. Start that first.
+        networks:
+            - mysql-network
+
+        stdin_open: true
+        tty: true
+            
+volumes:
+    db-data: 
+        driver: local
+
+networks:
+    mysql-network:
+        driver: bridge
+
+    
+    

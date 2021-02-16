@@ -1,10 +1,8 @@
-
 begin;
 drop DATABASE IF EXISTS PyCity;
 create DATABASE PyCity;
 USE PyCity;
 commit;
-
 
 begin;
 CREATE TABLE IF NOT EXISTS City (

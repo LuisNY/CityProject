@@ -3,15 +3,17 @@
 import pymysql
 import city
 
-class Connection:
-    credentials = ("localhost","root","mysql1234","PyCity")
-   
+class Connection:   
     def __init__(self):
-        self.db = pymysql.connect(*Connection.credentials)
+        self.db = pymysql.connect(host='mysql',
+        user='luigi',
+        password='mysql1234')
 
     def __del__(self):
-        self.db.close()
-        
+        try :
+            self.db.close()
+        except:
+            print("connection already closed")
 
     def getAllCities(self):
 
@@ -80,7 +82,7 @@ class Connection:
             except:
                 print("please insert a valid number")
                 
-        query_str = "INSERT INTO City (code, city, population, country) VALUES ('"
+        query_str = "INSERT INTO PyCity.City (code, city, population, country) VALUES ('"
         query_str += code
         query_str += "', '"
         query_str += name
