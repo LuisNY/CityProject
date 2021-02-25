@@ -15,7 +15,7 @@ Alternatively, you can use Docker.
 
 Assuming that the image of PyCity is available in docker-hub, with docker-compose you can run the application running:
 
-`docker-compose run pycity`
+`docker-compose -f docker-compose.yaml up`
 
 Otherwise you need to modify the docker-compose.yaml file such that the PyCity image is built from the Docker file first.
 
