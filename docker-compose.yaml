@@ -21,7 +21,7 @@ services:
             - mysql-network
 
     pycity: 
-        image: luisny/pycity-app:1.0 
+        image: luisny/pycity-app:1.1 
         #alternatively build from local Dockerfile 
         #build: .
 
