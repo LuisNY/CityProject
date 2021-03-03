@@ -118,7 +118,7 @@ class Connection:
     # delete an entry using city code
     def deleteCity(self, cities):
         code = input("insert city code: ")
-        query_str = "DELETE FROM City WHERE code = '" + str(code) + "';"
+        query_str = "DELETE FROM PyCity.City WHERE code = '" + str(code) + "';"
 
         self.cursor = self.db.cursor()
         try:
